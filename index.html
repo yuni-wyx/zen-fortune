@@ -22,20 +22,21 @@
     .jiao-panel{max-width:620px;margin:35px auto 8px;padding:27px 20px 23px;border:1px solid #d9d3c7;background:linear-gradient(135deg,#f4f0e8,#faf8f2);text-align:center}
     .jiao-heading{font-size:17px;font-weight:400;letter-spacing:.22em;margin:0 0 8px;color:var(--forest)}
     .jiao-description{font-size:12px;line-height:1.9;color:#818c81;margin:0 auto 8px;max-width:420px}
-    .jiao-pair{display:flex;gap:26px;align-items:center;justify-content:center;min-height:112px;margin:5px auto 6px}
-    .jiao-piece{display:block;position:relative;width:53px;height:91px;background:linear-gradient(100deg,#8e4c2b,#c07945 48%,#7c3d24);border:2px solid #824627;border-radius:75% 12% 70% 15%;box-shadow:8px 9px 10px #503a282b,inset 4px 2px 5px #e8a76b40;transform:rotate(-42deg)}
-    .jiao-piece:nth-child(2){transform:rotate(38deg)}
-    .jiao-piece.flat{background:linear-gradient(135deg,#e9ad78,#f6ce9d 50%,#cf8c5e);border-color:#c28759;box-shadow:8px 8px 10px #503a2820,inset 0 0 0 5px #d99a6b70}
-    .jiao-piece.flat:after{content:"";position:absolute;inset:8px;border:1px solid #b9724870;border-radius:inherit}
+    .jiao-pair{display:flex;gap:5px;align-items:center;justify-content:center;min-height:112px;margin:5px auto 6px}
+    .jiao-piece{display:block;position:relative;width:130px;height:88px;filter:drop-shadow(3px 10px 5px #503a2835);transform:rotate(-19deg)}
+    .jiao-piece:nth-child(2){transform:rotate(21deg) scaleX(-1)}
+    .jiao-piece svg{width:100%;height:100%;overflow:visible;display:block}
+    .jiao-piece .jiao-flat-face{opacity:0}.jiao-piece .jiao-round-face{opacity:1}
+    .jiao-piece.flat .jiao-flat-face{opacity:1}.jiao-piece.flat .jiao-round-face{opacity:0}
     .jiao-pair.tossing .jiao-piece:first-child{animation:jiaoTossLeft 1.05s cubic-bezier(.2,.7,.2,1)}
     .jiao-pair.tossing .jiao-piece:nth-child(2){animation:jiaoTossRight 1.05s cubic-bezier(.2,.7,.2,1)}
-    @keyframes jiaoTossLeft{0%{transform:translateY(0) rotate(-42deg)}45%{transform:translateY(-60px) rotate(210deg)}100%{transform:translateY(0) rotate(678deg)}}
-    @keyframes jiaoTossRight{0%{transform:translateY(0) rotate(38deg)}45%{transform:translateY(-75px) rotate(-220deg)}100%{transform:translateY(0) rotate(-682deg)}}
+    @keyframes jiaoTossLeft{0%{transform:translateY(0) rotate(-19deg)}45%{transform:translateY(-70px) rotate(210deg) scale(.82)}100%{transform:translateY(0) rotate(701deg)}}
+    @keyframes jiaoTossRight{0%{transform:translateY(0) rotate(21deg) scaleX(-1)}45%{transform:translateY(-75px) rotate(-220deg) scaleX(-.82)}100%{transform:translateY(0) rotate(-699deg) scaleX(-1)}}
     .jiao-result{font-size:14px;letter-spacing:.08em;line-height:1.7;min-height:48px;color:#755b3b;margin:4px auto 13px}
     .jiao-result strong{display:block;font-size:18px;color:var(--forest);font-weight:500;letter-spacing:.2em}
     .jiao-button{margin:auto;border:1px solid #9c8261;background:#f8f4eb;color:var(--forest);padding:12px 25px;font-size:13px;letter-spacing:.13em}
     .jiao-button:hover{background:#eee7d8}.jiao-button:disabled{opacity:.5;cursor:wait}
-    @media(max-width:780px){.jiao-panel{padding:22px 12px}.jiao-pair{gap:18px}}
+    @media(max-width:780px){.jiao-panel{padding:22px 12px}.jiao-pair{gap:0}.jiao-piece{width:112px;height:78px}}
   </style>
 </head>
 <body>
@@ -72,7 +73,10 @@
         <div class="jiao-panel" id="jiaoPanel">
           <h3 class="jiao-heading" id="jiaoHeading">擲筊 · 問心</h3>
           <p class="jiao-description" id="jiaoDescription">得籤後擲兩枚筊杯，看看這份指引是否與此刻的心意相應。</p>
-          <div class="jiao-pair" id="jiaoPair" aria-hidden="true"><span class="jiao-piece flat" id="jiaoLeft"></span><span class="jiao-piece" id="jiaoRight"></span></div>
+          <div class="jiao-pair" id="jiaoPair" aria-hidden="true">
+            <span class="jiao-piece flat" id="jiaoLeft"><svg viewBox="0 0 120 75" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="jiaoFlatA" x1="0" x2="0.8" y1="0" y2="1"><stop stop-color="#f4a15a"/><stop offset="0.52" stop-color="#bd382b"/><stop offset="1" stop-color="#82221b"/></linearGradient><linearGradient id="jiaoRoundA" x1="0" y1="0" x2="0.4" y2="1"><stop stop-color="#d85039"/><stop offset="0.52" stop-color="#9a2d26"/><stop offset="1" stop-color="#621b1a"/></linearGradient></defs><path d="M7 23 Q51 43 113 11 Q93 56 60 67 Q33 69 7 23 Z" fill="#61271c" stroke="#68251c" stroke-width="2"/><g class="jiao-flat-face"><path d="M10 24 Q52 44 109 15 Q91 51 60 62 Q35 65 10 24 Z" fill="url(#jiaoFlatA)"/><path d="M15 27 Q57 43 103 19" fill="none" stroke="#ffcd91" stroke-width="2.2" opacity=".65"/><path d="M25 43 Q56 67 85 43" fill="none" stroke="#6e251c" stroke-width="1.2" opacity=".38"/></g><g class="jiao-round-face"><path d="M10 24 Q51 43 109 15 Q92 54 60 64 Q35 65 10 24 Z" fill="url(#jiaoRoundA)"/><path d="M27 39 Q55 53 91 30" fill="none" stroke="#f18460" stroke-width="8" opacity=".35" stroke-linecap="round"/><path d="M31 52 Q59 66 80 49" fill="none" stroke="#4f1718" stroke-width="4" opacity=".36" stroke-linecap="round"/></g></svg></span>
+            <span class="jiao-piece" id="jiaoRight"><svg viewBox="0 0 120 75" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="jiaoFlatB" x1="0" x2="0.8" y1="0" y2="1"><stop stop-color="#f4a15a"/><stop offset="0.52" stop-color="#bd382b"/><stop offset="1" stop-color="#82221b"/></linearGradient><linearGradient id="jiaoRoundB" x1="0" y1="0" x2="0.4" y2="1"><stop stop-color="#d85039"/><stop offset="0.52" stop-color="#9a2d26"/><stop offset="1" stop-color="#621b1a"/></linearGradient></defs><path d="M7 23 Q51 43 113 11 Q93 56 60 67 Q33 69 7 23 Z" fill="#61271c" stroke="#68251c" stroke-width="2"/><g class="jiao-flat-face"><path d="M10 24 Q52 44 109 15 Q91 51 60 62 Q35 65 10 24 Z" fill="url(#jiaoFlatB)"/><path d="M15 27 Q57 43 103 19" fill="none" stroke="#ffcd91" stroke-width="2.2" opacity=".65"/><path d="M25 43 Q56 67 85 43" fill="none" stroke="#6e251c" stroke-width="1.2" opacity=".38"/></g><g class="jiao-round-face"><path d="M10 24 Q51 43 109 15 Q92 54 60 64 Q35 65 10 24 Z" fill="url(#jiaoRoundB)"/><path d="M27 39 Q55 53 91 30" fill="none" stroke="#f18460" stroke-width="8" opacity=".35" stroke-linecap="round"/><path d="M31 52 Q59 66 80 49" fill="none" stroke="#4f1718" stroke-width="4" opacity=".36" stroke-linecap="round"/></g></svg></span>
+          </div>
           <div class="jiao-result" id="jiaoResult" role="status" aria-live="polite"></div>
           <button class="jiao-button" id="jiaoBtn" type="button">誠心擲筊</button>
         </div>
